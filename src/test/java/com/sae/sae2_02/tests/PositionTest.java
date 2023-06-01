@@ -1,12 +1,12 @@
-package com.sae.sae2_02.modele;
+package com.sae.sae2_02.tests;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class JoueurTest {
+class PositionTest {
 
     @Test
-    void mouvement() {
+    void posGap() {
     }
 }

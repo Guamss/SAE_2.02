@@ -1,4 +1,4 @@
-package com.sae.sae2_02.modele;
+package com.sae.sae2_02.tests;
 
 import org.junit.jupiter.api.Test;
 
