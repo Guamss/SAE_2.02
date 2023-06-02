@@ -24,8 +24,7 @@ public class Joueur extends Position
         return time;
     }
 
-    public void completeQuest(Quete quete, LinkedList<Integer> liste)
-    {
+    public void completeQuest(Quete quete, LinkedList<Integer> liste) throws ExceptionJoueur {
         int[] gap = this.posGap(quete.getPosition());
         if (Arrays.equals(gap, new int[]{0, 0}))
         {
