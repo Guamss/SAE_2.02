@@ -10,14 +10,18 @@ public class Position
     {
         this.position = parPosition;
     }
+
     public int[] getPosition()
     {
         return position;
     }
-    //methode à finir
+
     public int[] posGap(int[] pos)
     {
-        ;
+        int[] ecartPositions = new int[2];
+        ecartPositions[0] = Math.abs(this.getPosition()[0] - pos[0]);
+        ecartPositions[1] = Math.abs(this.getPosition()[1] - pos[1]);
+        return ecartPositions;
     }
     public void setPosition(int[] pos)
     {
