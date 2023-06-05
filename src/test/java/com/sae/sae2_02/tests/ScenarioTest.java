@@ -14,8 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ScenarioTest {
 
     @Test
-    void getLastQuest()
-    {
+    void getLastQuest() throws ExceptionScenario {
         Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + "scenario0.txt"));
         Quete lastQuest = null;
         for(Quete quete: scenario.questArr )

@@ -11,6 +11,10 @@ public interface ConstanteErreur
             {
                     "Plusieurs quêtes numéro 0 sont présentes dans le Scenario",
                     "Il n'y a pas de quête numéro 0",
-                    "Il n'y a pas de première quête dans le scenario"
+                    "Il n'y a pas de première quête dans le scenario ou le scénario n'éxiste pas"
+            };
+    public final String[] ERREUR_ALGO =
+            {
+                    "La solution ne se termine pas par la dernière quête"
             };
 }
