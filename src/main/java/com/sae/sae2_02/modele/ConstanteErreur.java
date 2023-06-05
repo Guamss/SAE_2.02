@@ -1,6 +1,8 @@
 package com.sae.sae2_02.modele;
 
-
+/**
+ * Interface contenant les constantes d'erreur.
+ */
 public interface ConstanteErreur
 {
     public final String[] ERREUR_JOUEUR =
