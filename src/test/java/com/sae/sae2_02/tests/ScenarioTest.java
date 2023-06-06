@@ -15,7 +15,7 @@ class ScenarioTest {
 
     @Test
     void getLastQuest() throws ExceptionScenario {
-        Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + "scenario0.txt"));
+        Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + "scenario_0.txt"));
         Quete lastQuest = null;
         for(Quete quete: scenario.questArr )
         {
@@ -30,8 +30,8 @@ class ScenarioTest {
 
     @Test
     void getFirstQuests() throws ExceptionScenario {
-        ArrayList<Quete> firstQuestsTest = null;
-        Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + "scenario1.txt"));
+        ArrayList<Quete> firstQuestsTest = new ArrayList<>();
+        Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + "scenario_1.txt"));
         for (Quete quete : scenario.questArr)
         {
             if (!quete.hasPrecond())
