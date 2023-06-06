@@ -1,0 +1,20 @@
+.root
+{
+    -fx-background-color:#87B7D2;
+
+}
+#solutions
+{
+    -fx-background-color:white;
+}
+.label
+{
+    -fx-text-fill:white;
+    -fx-font-size:22px;
+}
+#solution
+{
+    -fx-text-fill:black;
+    -fx-font-size:12px;
+    -fx-font-weight:bold;
+}
