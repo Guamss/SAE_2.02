@@ -18,6 +18,6 @@ class JoueurTest {
         joueurTest.move(new int[]{2, 1});
         assertEquals(6, joueurTest.mouvement(new int[]{5, 4}));
         joueurTest.move(new int[]{0, 0});
-        assertEquals(9, joueurTest.mouvement(new int[]{0, 0}));
+        assertEquals(0, joueurTest.mouvement(new int[]{0, 0}));
     }
 }
