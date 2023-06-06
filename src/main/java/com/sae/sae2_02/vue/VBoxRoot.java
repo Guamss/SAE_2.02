@@ -31,6 +31,7 @@ public class VBoxRoot extends VBox {
         boiteAffichage.setId("solutions");
         VBox boiteBouton = new VBox();
         comboBoxScenario.getItems().addAll(SCENARIOS);
+        comboBoxScenario.setValue("scenario_0.txt");
         Button btnMore = new Button("En savoir plus...");
         btnMore.setAccessibleText("En savoir plus...");
         Button btnexhaustive = new Button("Exhaustive");

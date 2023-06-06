@@ -13,7 +13,7 @@ import java.util.TreeMap;
  * Cette boîte affiche les solutions et leurs informations associées.
  */
 public class BoiteAffichage extends VBox {
-    private Label solutionText = new Label("Veuillez choisir un scénario");
+    private Label solutionText = new Label("Veuillez choisir un algorithme");
     private Label nbrSolution = new Label("");
     private Label typeSolution = new Label("");
 
