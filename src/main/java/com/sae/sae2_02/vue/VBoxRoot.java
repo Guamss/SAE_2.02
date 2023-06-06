@@ -1,7 +1,6 @@
 package com.sae.sae2_02.vue;
 
 import com.sae.sae2_02.controleur.Controleur;
-import com.sae.sae2_02.modele.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -12,22 +11,31 @@ import javafx.scene.layout.VBox;
 
 import static com.sae.sae2_02.vue.ConstanteScenario.SCENARIOS;
 
-public class VBoxRoot extends VBox
-{
+/**
+ * Classe représentant la boîte racine de l'application.
+ * Cette boîte contient les éléments graphiques principaux de
+ * l'interface, tels que les boutons, les combobox et la boîte d'affichage des solutions.
+ */
+public class VBoxRoot extends VBox {
     private final static Controleur controleur = new Controleur();
     private static ComboBox<String> comboBoxScenario = new ComboBox<>();
     private static BoiteAffichage boiteAffichage = new BoiteAffichage();
-    public VBoxRoot() throws ExceptionScenario, ExceptionJoueur, ExceptionAlgorithme
-    {
+
+    /**
+     * Constructeur de la classe VBoxRoot.
+     * Initialise les éléments graphiques de la
+     * boîte racine de l'interface utilisateur.
+     */
+    public VBoxRoot(){
         this.setPadding(new Insets(10));
         boiteAffichage.setId("solutions");
         VBox boiteBouton = new VBox();
         comboBoxScenario.getItems().addAll(SCENARIOS);
         Button btnMore = new Button("En savoir plus...");
         btnMore.setAccessibleText("En savoir plus...");
-        Button btnexhaustive= new Button("Exhaustive");
+        Button btnexhaustive = new Button("Exhaustive");
         btnexhaustive.setAccessibleText("Exhautive");
-        Button btnefficace= new Button("Efficace");
+        Button btnefficace = new Button("Efficace");
         btnefficace.setAccessibleText("Efficace");
 
         btnexhaustive.setOnAction(controleur);
@@ -44,15 +52,30 @@ public class VBoxRoot extends VBox
         this.getChildren().addAll(hBoxScenario, boiteSolutions);
     }
 
-    public static Controleur getControleur()
-    {
+    /**
+     * Retourne le contrôleur associé à la boîte racine.
+     *
+     * @return Le contrôleur de l'application.
+     */
+    public static Controleur getControleur() {
         return controleur;
     }
+
+    /**
+     * Retourne la ComboBox des scénarios.
+     *
+     * @return La ComboBox des scénarios.
+     */
     public static ComboBox<String> getComboBox() {
         return comboBoxScenario;
     }
-    public static BoiteAffichage getBoiteAffichage()
-    {
+
+    /**
+     * Retourne la boîte d'affichage des solutions.
+     *
+     * @return La boîte d'affichage des solutions.
+     */
+    public static BoiteAffichage getBoiteAffichage() {
         return boiteAffichage;
     }
 }
