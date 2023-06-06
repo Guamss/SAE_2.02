@@ -11,71 +11,53 @@ import java.util.*;
 
 import static com.sae.sae2_02.vue.ConstanteScenario.SCENARIOS;
 
+/**
+ * Classe représentant le contrôleur de l'application.
+ * Le contrôleur gère les événements et les actions
+ * effectuées par l'utilisateur.
+ */
 public class Controleur implements EventHandler<ActionEvent>
 {
+    /**
+     * Méthode appelée lorsqu'un événement se produit.
+     *
+     * @param event L'événement déclenché.
+     */
     @Override
     public void handle(ActionEvent event)
     {
         if (event.getSource() instanceof Button button)
         {
-            if (button.getAccessibleText().equals("Exhautive"))
-            {
-                String selectedItem = VBoxRoot.getComboBox().getSelectionModel().getSelectedItem();
-                Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + selectedItem));
-                try
+            try {
+                if (button.getAccessibleText().equals("Exhautive"))
                 {
+                    // Gestion de l'action "Exhaustive"
+                    String selectedItem = VBoxRoot.getComboBox().getSelectionModel().getSelectedItem();
+                    Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + selectedItem));
                     TreeMap<Integer, LinkedList<Integer>> efficace = Algorithme.exhaustive(scenario);
                     VBoxRoot.getBoiteAffichage().afficher(efficace, "Exhaustive");
                 }
-                catch (ExceptionScenario e)
+                else if (button.getAccessibleText().equals("Efficace"))
                 {
-                    System.out.println(e.getError());
-                }
-                catch (ExceptionJoueur e)
-                {
-                    System.out.println(e.getError());
-                }
-                catch (ExceptionAlgorithme e)
-                {
-                    System.out.println(e.getError());
-                }
-            }
-            else if (button.getAccessibleText().equals("Efficace"))
-            {
-                String selectedItem = VBoxRoot.getComboBox().getSelectionModel().getSelectedItem();
-                Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + selectedItem));
-                try
-                {
+                    // Gestion de l'action "Efficace"
+                    String selectedItem = VBoxRoot.getComboBox().getSelectionModel().getSelectedItem();
+                    Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + selectedItem));
                     TreeMap<Integer, LinkedList<Integer>> efficace = Algorithme.efficace(scenario);
                     VBoxRoot.getBoiteAffichage().afficher(efficace, "Efficace");
                 }
-                catch (ExceptionScenario e)
+                else if (button.getAccessibleText().equals("En savoir plus..."))
                 {
-                    System.out.println(e.getError());
-                }
-                catch (ExceptionJoueur e)
-                {
-                    System.out.println(e.getError());
-                }
-                catch (ExceptionAlgorithme e)
-                {
-                    System.out.println(e.getError());
-                }
-            }
-            else if (button.getAccessibleText().equals("En savoir plus..."))
-            {
-                String selectedItem = VBoxRoot.getComboBox().getSelectionModel().getSelectedItem();
-                Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + selectedItem));
-                Dialog<ButtonType> dialog = new Dialog<>();
-                dialog.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
-                if (Arrays.asList(SCENARIOS).contains(selectedItem))
-                {
-                    dialog.setTitle("Info : " + selectedItem);
-                    try
+                    // Gestion de l'action "En savoir plus..."
+                    String selectedItem = VBoxRoot.getComboBox().getSelectionModel().getSelectedItem();
+                    Scenario scenario = LectureFichierTexte.lecture(new File("txt" + File.separator + selectedItem));
+                    Dialog<ButtonType> dialog = new Dialog<>();  // Création de la boite de dialogue
+                    dialog.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                    if (Arrays.asList(SCENARIOS).contains(selectedItem))  // Si le scénario sélectionné existe
                     {
-                        ArrayList<Quete> firstQuests =  scenario.getFirstQuests();
+                        dialog.setTitle("Info : " + selectedItem);
+                        ArrayList<Quete> firstQuests = scenario.getFirstQuests();
                         ArrayList<Integer> firstQuestsNum = new ArrayList<>();
-                        for (Quete quete : firstQuests)
+                        for (Quete quete : firstQuests)  // On récupère uniquement les numéros des quêtes
                         {
                             firstQuestsNum.add(quete.numero);
                         }
@@ -84,17 +66,26 @@ public class Controleur implements EventHandler<ActionEvent>
                         showedText += "Nombre de quêtes : " + scenario.questArr.size();
                         dialog.setContentText(showedText);
                     }
-                    catch (ExceptionScenario e)
+                    else
                     {
-                        System.out.println(e.getError());
+
+                        dialog.setTitle("Aucun scénario sélectionné");
+                        dialog.setContentText("Veuillez sélectionner un scénario");
                     }
+                    dialog.showAndWait();
                 }
-                else
-                {
-                    dialog.setTitle("Aucun scénario sélectionné");
-                    dialog.setContentText("Veuillez sélectionner un scénario");
-                }
-                dialog.showAndWait();
+            }
+            catch (ExceptionScenario error)
+            {
+                System.out.println(error.getError());
+            }
+            catch (ExceptionJoueur error)
+            {
+                System.out.println(error.getError());
+            }
+            catch (ExceptionAlgorithme error)
+            {
+                System.out.println(error.getError());
             }
         }
     }
