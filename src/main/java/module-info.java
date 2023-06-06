@@ -7,4 +7,6 @@ module com.sae.sae2_02 {
 
     opens com.sae.sae2_02 to javafx.fxml;
     exports com.sae.sae2_02.modele;
+    exports com.sae.sae2_02.vue;
+    exports com.sae.sae2_02.controleur;
 }
